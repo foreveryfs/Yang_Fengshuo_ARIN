@@ -1,0 +1,1 @@
+As can be seen in the graph, the distance between "king" and "queen" is similar to the distance between "male and female", which shows their semantic similarity.However, "hail" appears isolated from other words, suggesting it may not share a strong contextual relationship with the other words in this particular dataset.

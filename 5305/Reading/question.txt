@@ -1,0 +1,31 @@
+1. in the summary phase of your report,you mentioned this paper used five prompting strategies for evaluation,and some of them are easy to understand.But could you explain Chain-of-thought prompting and Critique prompting using examples?Is it necessary for users to participate in every step or just tell LLM to do so in one prompt?
+
+2.The evaluation methodology part says that there were 15 volunteers rated summaries as human evaluation.Does the original paper explain how to choose the volunteers,and what level them are at in understanding code summary?Does it matter?
+
+3.About the findings of RQ2,I notice that Critique prompting behaved worse almost in every model even compared to Zero-Shot prompting.What explanation does the original paper offer for this phenomenon? 
+
+4.In the results of RQ4,'For FP, specialized code LLMs (e.g., StarChat-β) perform better on Haskell than on Erlang, whereas the reverse is true for general-purpose LLMs (e.g., GPT-4)' shows a difference between Haskell and Erlang.So what is the main difference between these two coding languages leading to that?
+
+1.In this paper,the auhtors said they divided significant noise in large-scale datasets into 8 different types.Could you provide their names or some examples?
+
+2.One of this paper's features is their three filters as you mentioned: syntax, relevance, coverage.How do they work collaboratively? For instance, is there a specific order of application, and do they complement or overlap in noise detection?
+
+3.We can see something about ablation in 'Moreover, via ablation studies, the paper verifies the effectiveness of the three filters in CleanTest'.Could you show a certain results from the original paper in comparing these factors?
+
+4.About the Key Results part,we can know Methods2Test have more noise percentage and higher improvement than Atlas.What's the main type of noise among 43.52% of Methods2Test?Which types of noise are better handled in filtering?  
+
+1.I notice the results in RQ1.2,Figue 5.For '42% of the source files, 34% of the functions are ML-related',how to interpret Fig 5? Does this proportion(42%) vary across different system types(Business or ML-Tool)?
+
+2.In the findings of RQ2.2, we can see the most duplicated source code implementing ML are microsoft/unilm and microsoft/LMOps.What characteristics or features of these original repositories make their ML code widely reused?
+
+3.About table V in RQ3.1,'he most frequent input-output combination is text-to-text',why do you think it holds the main part of all the inetactions?Especially the model embedded audio is at much lower rate.
+
+4.As the authors said, their study just focuses on open-source GitHub repositories.Does this limitation bring to the generalizability of the findings, especially for closed-source or industry-specific ML-enabled systems?
+
+1.In the process of combination of two LLM agents:Navigator and Driver, 'The Navigator starts with “reflection”: firstly it provides multiple solution plans and picks the best one to guides the Driver'.I would ask how does the Navigator decide which is the first output to the Driver when it has no any feedback at that time,just randomly or other ways?And when having the feedback from the Drivers,how the Navigator selects the "optimal plan" from multiple proposed solutions?Hope the explanation of whole process in more details.
+
+2.What's the meaning of CoT and SCoT prompting mentioned in Table 2,result of Q 1?What's the key difference between these generating approches?
+
+3.About Q 2 researching,the authors tried to work on 'two critical hyperparameters: the maximum number of iterations r and the number of clusters k'.What is the main influence these two parameters have during the generating process?Clusters k means dividing different solutions into different collections,does it right?
+
+4.Error analysis indicates "Wrong Answer (WA)" is the main failure type, especially on CodeContest. Does PairCoder’s feedback mechanism specifically target WA errors, or is it equally effective for Runtime Errors and Time Limit Exceeded?

@@ -1,0 +1,9 @@
+{
+  "image_id": "abstract_v002_val2015_000000020010.png",
+  "ishuman": 1,
+  "target_object": {
+    "category_name": "girl",
+    "action": "reading",
+    "count": 1
+  }
+}

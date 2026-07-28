@@ -1,0 +1,229 @@
+1.环境------------------------------------------------------------
+📊 核心依赖检查报告
+Python (3.10.20)：现代、高效，能完美应对后续大规模数据的预处理。
+
+PyTorch (2.7.1+cu118)：完美适配超算上的 CUDA 11.8，能100%榨干 DGX 节点上高端显卡（如 A100）的算力。
+
+Detectron2 (0.6)：已成功塞进环境，后续用于提取图像目标特征（BUTD features）不会卡壳。
+
+MMF (1.0.0rc12)：已经成功躺在你的虚拟环境里了，而且没有破坏你的 PyTorch 版本！
+
+另外，omegaconf (2.3.1)、progressbar2 (4.5.0) 和 demjson3 (3.0.6) 这些我在上一步提到的辅助包也都已经各就各位。
+
+
+pip install opencv-python pycocotools progressbar2 spacy pandas
+
+srun --partition normal --account=mscaisuperpod --nodes=1 --gpus-per-node=1 --time 0-00:30:00 --pty bash
+
+python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
+
+pip install git+https://github.com/facebookresearch/mmf.git --no-deps
+pip install omegaconf demjson3 progressbar2
+
+由于你的项目使用的是 Python 3.10，而 MMF 是基于 Python 3.7/3.8 时代编写的。Python 3.10 彻底移除了 collections.Mapping 等老旧的快捷别名（全部强制移到了 collections.abc 下）。
+
+当你接下来运行 test_bert.py 时，百分之百会触发以下致命报错：
+
+AttributeError: module 'collections' has no attribute 'Mapping'
+
+💡 提前避坑解决方案：
+请打开你的 test_bert.py 文件，在代码的最顶端（第 1 行，必须在所有其他 import 之前），死死地贴上这段动态兼容补丁：
+
+Python
+# ================= Python 3.10 强行兼容 MMF 远古代码补丁 =================
+import collections
+import collections.abc
+collections.Mapping = collections.abc.Mapping
+collections.MutableMapping = collections.abc.MutableMapping
+collections.Sequence = collections.abc.Sequence
+collections.MutableSequence = collections.abc.MutableSequence
+# =========================================================================
+
+import yaml
+import torch
+import requests
+# ... 后面保持你原有的代码不动
+这段补丁会在程序启动的一瞬间建立映射，欺骗 MMF 的底层源码，让它在现代的 Python 3.10 上也能完美跑通。做完这些后，你就可以放心去运行你的 test_bert.py 脚本了。
+-------------------------------------------------------------------------
+
+
+
+2.离线资源---------------------------------------------------------------------------
+1. 目标检测与特征提取资源（服务于 image_to_feature.py）
+这个文件是用 Detectron2 来提取图像的 BUTD（Bottom-Up Top-Down）特征，它需要：
+
+词表文件：objects_vocab.txt 和 attributes_vocab.txt（Visual Genome 数据集的物体和属性标签词表，代码里通过 os.path.join(data_path, ...) 读取）。
+
+检测器模型配置与权重：
+
+经典的 Bottom-Up 目标检测器配置文件（.yaml）。
+
+预训练好的 Faster R-CNN 权重文件（.pth 或 .bin）。
+
+2. VQA 官方数据集与 COCO 图库（服务于 answer_to_question.py / image_cut.py 等）
+做数据变异（裁剪、插入、删除）和评测需要基础图库：
+
+文本标注：VQA v2 或 Abstract VQA 的官方问答 JSON 文件（例如 OpenEnded_abstract_v002_val2015_questions.json）。
+
+图像数据：COCO 2014 或 2017 的图片集（用于 cv2.imread 读取并进行图像操作）。
+
+COCO API 实例：pycocotools 需要的 instances_train2014.json 等标准的 COCO 目标检测标注文件（image_insert.py 中有调用）。
+
+3. 多模态预训练模型权重（服务于 test_bert.py）
+VisualBERT / ViLBERT 权重：MMF 框架虽然能自动下载，但在超算计算节点通常无法连接外网。你必须提前下载好 visual_bert 的预训练权重（通常是 .pth 或 .bin），并将其放置在 MMF 的缓存目录（通常在 ~/.cache/torch/mmf/）或指定路径下。
+
+
+
+
+==================== 大词库扫描结果 (过滤前 11 个 -> 严格去重后共 4 个物体) ====================
+[1] 自动捕获: 【squirrel】
+    置信度(Score): 0.6348
+    绝对坐标(BBox): xmin=597, ymin=273, xmax=633, ymax=302
+
+[2] 自动捕获: 【squirrel】
+    置信度(Score): 0.6339
+    绝对坐标(BBox): xmin=618, ymin=293, xmax=646, ymax=323
+
+[3] 自动捕获: 【squirrel】
+    置信度(Score): 0.6158
+    绝对坐标(BBox): xmin=553, ymin=224, xmax=611, ymax=267
+
+[4] 自动捕获: 【Christmas tree】
+    置信度(Score): 0.5361
+    绝对坐标(BBox): xmin=168, ymin=97, xmax=383, ymax=380
+
+=========================================================================
+
+
+
+pip install qwen-vl-utils
+{
+  "image_id": "4.jpg",
+  "ishuman": 0,
+  "target_object": {
+    "category_name": "apples",
+    "action": null,
+    "count": 3
+  }
+}
+
+{
+  "image_id": "4.jpg",
+  "ishuman": 0,
+  "question_id": "4.jpg",
+  "question": "What is the total number of apples?",
+  "object": {
+    "category_name": "apples",
+    "action": null,
+    "count": 3,
+    "coordinates": [
+      {
+        "xmin": 136,
+        "ymin": 106,
+        "xmax": 325,
+        "ymax": 308
+      },
+      {
+        "xmin": 24,
+        "ymin": 223,
+        "xmax": 217,
+        "ymax": 441
+      },
+      {
+        "xmin": 220,
+        "ymin": 214,
+        "xmax": 433,
+        "ymax": 445
+      }
+    ]
+  }
+}
+
+{
+  "image_id": "abstract_v002_val2015_000000020001.png",
+  "ishuman": 0,
+  "target_object": {
+    "category_name": "chipmunks",
+    "action": null,
+    "count": 3
+  }
+}
+
+{
+  "image_id": "abstract_v002_val2015_000000020001.png",
+  "ishuman": 0,
+  "question_id": "abstract_v002_val2015_000000020001.png",
+  "question": "What is the total number of chipmunks?",
+  "object": {
+    "category_name": "chipmunks",
+    "action": null,
+    "count": 1,
+    "coordinates": [
+      {
+        "xmin": 597,
+        "ymin": 273,
+        "xmax": 633,
+        "ymax": 302
+      }
+    ]
+  }
+}
+
+
+{
+  "image_id": "2.png",
+  "ishuman": 1,
+  "target_object": {
+    "category_name": "man",
+    "action": "running",
+    "count": 2
+  }
+}
+
+{
+  "image_id": "2.png",
+  "ishuman": 1,
+  "question_id": "2.png",
+  "question": "Is the man running?",
+  "object": {
+    "category_name": "man",
+    "action": "running",
+    "count": 1,
+    "coordinates": [
+      {
+        "xmin": 235,
+        "ymin": 83,
+        "xmax": 335,
+        "ymax": 345
+      }
+    ]
+  }
+}
+
+📥 一、 必须预下载的模型权重列表
+1. 🟢 边缘精细抠图模型（真实图 / 卡通图通用）
+模型名称: SAM (Segment Anything Model)
+
+Hugging Face ID: facebook/sam-vit-base
+
+下载作用: 你的需求是“已知坐标（Bounding Box）”。但如果直接用方框去增删，画面会留下死板的方形切痕。SAM 的作用是把你的 [xmin, ymin, xmax, ymax] 矩形框输入进去，自动吸附并输出像素级贴合的黑色/白色 Mask（掩膜）图像。
+
+2. 🔵 真实图像编辑底模（负责真实照片的增/删）
+模型名称: Stable Diffusion v1.5 Inpainting
+
+Hugging Face ID: runwayml/stable-diffusion-inpainting
+
+下载作用: 专门针对局部重绘训练的 9 通道标准大模型。
+
+删除时：用它涂抹运动员，输入提示词 "clean background, running track" 就能完美抹除人并缝合跑道。
+
+添加时：在空白区画个框，输入提示词 "a sports water bottle, photorealistic" 就能无中生有出一个带写实阴影的水壶。
+
+3. 🟡 抽象/卡通编辑底模（负责 2D/动漫卡通图的增/删）
+模型名称: Anime Inpainting (动漫局部重绘特调版)
+
+Hugging Face ID: cyberdelia/AnimeInpainting
+
+下载作用: 如果用上面的写实模型去改卡通图，画面会彻底崩坏（比如在平涂卡通客厅里塞入一个高清毛发毕现的猫）。这个模型能完美识别线稿和平涂（Flat Shading），配合提示词（如 "abstract cartoon style, a cute cat"），可以保证添加的物体自带黑色描边，完美融入 Abstract Scenes 数据集。
+
+

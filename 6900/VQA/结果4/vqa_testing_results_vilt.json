@@ -1,0 +1,79 @@
+{
+  "meta_summary": {
+    "model_tested": "vilt",
+    "total_test_points": 6,
+    "total_violations": 4,
+    "global_violation_rate_percentage": 66.66666666666666
+  },
+  "detailed_cases": [
+    {
+      "image_id": "3",
+      "is_human": false,
+      "evaluation_results": {
+        "orig": {
+          "positive_eval": [
+            {
+              "question": "What is the total number of apples?",
+              "predict_answer": "2",
+              "confidence": 0.9899117350578308,
+              "expected_number": 2,
+              "predicted_number": 2,
+              "is_violation": false
+            },
+            {
+              "question": "How many apples are there ?",
+              "predict_answer": "2",
+              "confidence": 0.9983037710189819,
+              "expected_number": 2,
+              "predicted_number": 2,
+              "is_violation": false
+            }
+          ],
+          "negative_eval": []
+        },
+        "remove": {
+          "positive_eval": [
+            {
+              "question": "What is the total number of apples?",
+              "predict_answer": "2",
+              "confidence": 0.997111439704895,
+              "expected_number": 1,
+              "predicted_number": 2,
+              "is_violation": true
+            },
+            {
+              "question": "How many apples are there ?",
+              "predict_answer": "2",
+              "confidence": 0.9995717406272888,
+              "expected_number": 1,
+              "predicted_number": 2,
+              "is_violation": true
+            }
+          ],
+          "negative_eval": []
+        },
+        "insert": {
+          "positive_eval": [
+            {
+              "question": "What is the total number of apples?",
+              "predict_answer": "2",
+              "confidence": 0.9707650542259216,
+              "expected_number": 3,
+              "predicted_number": 2,
+              "is_violation": true
+            },
+            {
+              "question": "How many apples are there ?",
+              "predict_answer": "2",
+              "confidence": 0.9952101111412048,
+              "expected_number": 3,
+              "predicted_number": 2,
+              "is_violation": true
+            }
+          ],
+          "negative_eval": []
+        }
+      }
+    }
+  ]
+}

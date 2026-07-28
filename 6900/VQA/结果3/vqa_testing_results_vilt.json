@@ -1,0 +1,422 @@
+{
+  "meta_summary": {
+    "model_tested": "vilt",
+    "total_test_points": 28,
+    "total_violations": 3,
+    "global_violation_rate_percentage": 10.714285714285714
+  },
+  "detailed_cases": [
+    {
+      "image_id": "2",
+      "is_human": true,
+      "evaluation_results": {
+        "orig": {
+          "original_baseline": {
+            "question": "Is the man running?",
+            "answer": "yes",
+            "confidence": 0.9023721814155579
+          },
+          "positive_eval": [
+            {
+              "mut_idx": 0,
+              "mutated_question": "Is the boy running?",
+              "predict_answer": "yes",
+              "confidence": 0.7052826285362244,
+              "confidence_drop": 0.1970895528793335,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 1,
+              "mutated_question": "Is the black-man running?",
+              "predict_answer": "yes",
+              "confidence": 0.980329155921936,
+              "confidence_drop": -0.07795697450637817,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 2,
+              "mutated_question": "Is the white-man running?",
+              "predict_answer": "yes",
+              "confidence": 0.8763605952262878,
+              "confidence_drop": 0.02601158618927002,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 3,
+              "mutated_question": "Is the asian-man running?",
+              "predict_answer": "yes",
+              "confidence": 0.7636989951133728,
+              "confidence_drop": 0.13867318630218506,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 4,
+              "mutated_question": "Is the gentleman running?",
+              "predict_answer": "yes",
+              "confidence": 0.8470132946968079,
+              "confidence_drop": 0.05535888671875,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 5,
+              "mutated_question": "Is the male running?",
+              "predict_answer": "yes",
+              "confidence": 0.992215096950531,
+              "confidence_drop": -0.08984291553497314,
+              "is_violation": false
+            }
+          ],
+          "negative_eval": [
+            {
+              "mut_idx": 0,
+              "mutated_question": "Is the girl running?",
+              "predict_answer": "no",
+              "confidence": 0.5398193597793579,
+              "confidence_drop": 0.36255282163619995,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 1,
+              "mutated_question": "Is the woman running?",
+              "predict_answer": "yes",
+              "confidence": 0.5453762412071228,
+              "confidence_drop": 0.35699594020843506,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 2,
+              "mutated_question": "Is the black-woman running?",
+              "predict_answer": "no",
+              "confidence": 0.8667146563529968,
+              "confidence_drop": 0.035657525062561035,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 3,
+              "mutated_question": "Is the white-woman running?",
+              "predict_answer": "no",
+              "confidence": 0.8358211517333984,
+              "confidence_drop": 0.06655102968215942,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 4,
+              "mutated_question": "Is the asian-woman running?",
+              "predict_answer": "no",
+              "confidence": 0.9732313752174377,
+              "confidence_drop": -0.07085919380187988,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 5,
+              "mutated_question": "Is the lady running?",
+              "predict_answer": "yes",
+              "confidence": 0.6201353669166565,
+              "confidence_drop": 0.28223681449890137,
+              "violation_condition_triggered": true,
+              "is_violation_counted": true
+            },
+            {
+              "mut_idx": 6,
+              "mutated_question": "Is the female running?",
+              "predict_answer": "no",
+              "confidence": 0.616366446018219,
+              "confidence_drop": 0.28600573539733887,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 7,
+              "mutated_question": "Is the man sitting?",
+              "predict_answer": "no",
+              "confidence": 0.9999946355819702,
+              "confidence_drop": -0.09762245416641235,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 8,
+              "mutated_question": "Is the man sleeping?",
+              "predict_answer": "no",
+              "confidence": 0.9999988079071045,
+              "confidence_drop": -0.09762662649154663,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 9,
+              "mutated_question": "Is the man jumping?",
+              "predict_answer": "no",
+              "confidence": 0.9903298616409302,
+              "confidence_drop": -0.08795768022537231,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 10,
+              "mutated_question": "Is the man eating?",
+              "predict_answer": "no",
+              "confidence": 0.9999823570251465,
+              "confidence_drop": -0.09761017560958862,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 11,
+              "mutated_question": "Is the man riding?",
+              "predict_answer": "no",
+              "confidence": 0.9942732453346252,
+              "confidence_drop": -0.09190106391906738,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 12,
+              "mutated_question": "Is the man cooking?",
+              "predict_answer": "no",
+              "confidence": 0.9999967813491821,
+              "confidence_drop": -0.09762459993362427,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 13,
+              "mutated_question": "Is the man reading?",
+              "predict_answer": "no",
+              "confidence": 0.9999873638153076,
+              "confidence_drop": -0.09761518239974976,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 14,
+              "mutated_question": "Is the man playing football?",
+              "predict_answer": "no",
+              "confidence": 0.9999974966049194,
+              "confidence_drop": -0.09762531518936157,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 15,
+              "mutated_question": "Is the man painting?",
+              "predict_answer": "no",
+              "confidence": 0.9999274015426636,
+              "confidence_drop": -0.09755522012710571,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            }
+          ]
+        },
+        "remove": {
+          "original_baseline": {
+            "question": "Is the man running?",
+            "answer": "no",
+            "confidence": 0.5005829334259033
+          },
+          "positive_eval": [
+            {
+              "mut_idx": 0,
+              "mutated_question": "Is the boy running?",
+              "predict_answer": "no",
+              "confidence": 0.7532553672790527,
+              "confidence_drop": -0.2526724338531494,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 1,
+              "mutated_question": "Is the black-man running?",
+              "predict_answer": "no",
+              "confidence": 0.8550812005996704,
+              "confidence_drop": -0.3544982671737671,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 2,
+              "mutated_question": "Is the white-man running?",
+              "predict_answer": "yes",
+              "confidence": 0.6710111498832703,
+              "confidence_drop": -0.17042821645736694,
+              "is_violation": true
+            },
+            {
+              "mut_idx": 3,
+              "mutated_question": "Is the asian-man running?",
+              "predict_answer": "no",
+              "confidence": 0.9508868455886841,
+              "confidence_drop": -0.45030391216278076,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 4,
+              "mutated_question": "Is the gentleman running?",
+              "predict_answer": "no",
+              "confidence": 0.6062471866607666,
+              "confidence_drop": -0.10566425323486328,
+              "is_violation": false
+            },
+            {
+              "mut_idx": 5,
+              "mutated_question": "Is the male running?",
+              "predict_answer": "yes",
+              "confidence": 0.9255268573760986,
+              "confidence_drop": -0.4249439239501953,
+              "is_violation": true
+            }
+          ],
+          "negative_eval": [
+            {
+              "mut_idx": 0,
+              "mutated_question": "Is the girl running?",
+              "predict_answer": "no",
+              "confidence": 0.7366436123847961,
+              "confidence_drop": -0.23606067895889282,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 1,
+              "mutated_question": "Is the woman running?",
+              "predict_answer": "no",
+              "confidence": 0.5059000849723816,
+              "confidence_drop": -0.0053171515464782715,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 2,
+              "mutated_question": "Is the black-woman running?",
+              "predict_answer": "no",
+              "confidence": 0.8974888920783997,
+              "confidence_drop": -0.39690595865249634,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 3,
+              "mutated_question": "Is the white-woman running?",
+              "predict_answer": "yes",
+              "confidence": 0.6272774934768677,
+              "confidence_drop": -0.12669456005096436,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 4,
+              "mutated_question": "Is the asian-woman running?",
+              "predict_answer": "no",
+              "confidence": 0.9731191396713257,
+              "confidence_drop": -0.47253620624542236,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 5,
+              "mutated_question": "Is the lady running?",
+              "predict_answer": "no",
+              "confidence": 0.6763336658477783,
+              "confidence_drop": -0.175750732421875,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 6,
+              "mutated_question": "Is the female running?",
+              "predict_answer": "yes",
+              "confidence": 0.5892586708068848,
+              "confidence_drop": -0.08867573738098145,
+              "violation_condition_triggered": false,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 7,
+              "mutated_question": "Is the man sitting?",
+              "predict_answer": "no",
+              "confidence": 0.9999977350234985,
+              "confidence_drop": -0.4994148015975952,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 8,
+              "mutated_question": "Is the man sleeping?",
+              "predict_answer": "no",
+              "confidence": 0.9999986886978149,
+              "confidence_drop": -0.4994157552719116,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 9,
+              "mutated_question": "Is the man jumping?",
+              "predict_answer": "no",
+              "confidence": 0.9998086094856262,
+              "confidence_drop": -0.4992256760597229,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 10,
+              "mutated_question": "Is the man eating?",
+              "predict_answer": "no",
+              "confidence": 0.9999696016311646,
+              "confidence_drop": -0.49938666820526123,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 11,
+              "mutated_question": "Is the man riding?",
+              "predict_answer": "no",
+              "confidence": 0.9912681579589844,
+              "confidence_drop": -0.49068522453308105,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 12,
+              "mutated_question": "Is the man cooking?",
+              "predict_answer": "no",
+              "confidence": 0.9999959468841553,
+              "confidence_drop": -0.49941301345825195,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 13,
+              "mutated_question": "Is the man reading?",
+              "predict_answer": "no",
+              "confidence": 0.9999837875366211,
+              "confidence_drop": -0.4994008541107178,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 14,
+              "mutated_question": "Is the man playing football?",
+              "predict_answer": "no",
+              "confidence": 0.9999959468841553,
+              "confidence_drop": -0.49941301345825195,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            },
+            {
+              "mut_idx": 15,
+              "mutated_question": "Is the man painting?",
+              "predict_answer": "no",
+              "confidence": 0.9999170303344727,
+              "confidence_drop": -0.49933409690856934,
+              "violation_condition_triggered": true,
+              "is_violation_counted": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

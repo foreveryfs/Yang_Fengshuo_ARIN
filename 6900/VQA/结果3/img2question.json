@@ -1,0 +1,9 @@
+{
+  "image_id": "2.png",
+  "ishuman": 1,
+  "target_object": {
+    "category_name": "man",
+    "action": "running",
+    "count": 2
+  }
+}

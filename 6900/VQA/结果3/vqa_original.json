@@ -1,0 +1,25 @@
+{
+  "image_id": "2.png",
+  "ishuman": 1,
+  "question_id": "2.png",
+  "question": "Is the man running?",
+  "object": {
+    "category_name": "man",
+    "action": "running",
+    "count": 2,
+    "coordinates": [
+      {
+        "xmin": 235,
+        "ymin": 83,
+        "xmax": 335,
+        "ymax": 345
+      },
+         {
+        "xmin": 445,
+        "ymin": 70,
+        "xmax": 540,
+        "ymax": 330
+      }
+    ]
+  }
+}

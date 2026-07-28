@@ -1,0 +1,12 @@
+{
+    "question_id": "3",
+    "image_id": "3",
+    "is_human": false,
+    "original_question": "What is the total number of apples?",
+    "mutations": {
+        "positive": [
+            "How many apples are there ?"
+        ],
+        "negative": []
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "image_id": "3.jpg",
+  "ishuman": 0,
+  "target_object": {
+    "category_name": "apples",
+    "action": null,
+    "count": 3
+  }
+}

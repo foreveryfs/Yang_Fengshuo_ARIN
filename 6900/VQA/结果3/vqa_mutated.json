@@ -1,0 +1,40 @@
+{
+    "question_id": "2",
+    "image_id": "2",
+    "is_human": true,
+    "original_question": "Is the man running?",
+    "mutations": {
+        "positive": [
+            "Is the boy running?",
+            "Is the black-man running?",
+            "Is the white-man running?",
+            "Is the asian-man running?",
+            "Is the gentleman running?",
+            "Is the male running?"
+        ],
+        "negative": [
+            "Is the girl running?",
+            "Is the woman running?",
+            "Is the black-woman running?",
+            "Is the white-woman running?",
+            "Is the asian-woman running?",
+            "Is the lady running?",
+            "Is the female running?",
+            "Is the man sitting?",
+            "Is the man sleeping?",
+            "Is the man jumping?",
+            "Is the man eating?",
+            "Is the man riding?",
+            "Is the man cooking?",
+            "Is the man reading?",
+            "Is the man playing football?",
+            "Is the man painting?"
+        ]
+		"numberic": [
+            "How many running man are there?",
+			"How many running woman are there?",   
+            "How many running black-man are there?",
+            "How many running white-manman are there?",
+        ],
+    }
+}

@@ -1,0 +1,72 @@
+{
+  "meta_summary": {
+    "model_tested": "vilt",
+    "batch_size_used": 64,
+    "total_mutations": 6,
+    "violation_a_rate": 33.33333333333333,
+    "violation_b_rate": 50.0,
+    "config": {
+      "conf_drop_threshold": 0.2
+    }
+  },
+  "detailed_cases": [
+    {
+      "image_id": 2,
+      "original": {
+        "question": "Is the man running?",
+        "answer": "yes",
+        "confidence": 0.9023718237876892
+      },
+      "mutations_eval": [
+        {
+          "mutated_question": "Is the man running ?",
+          "predict_answer": "yes",
+          "confidence": 0.9023724794387817,
+          "confidence_drop": -6.556510925292969e-07,
+          "violation_A": false,
+          "violation_B": false
+        },
+        {
+          "mutated_question": "Is the woman running ?",
+          "predict_answer": "yes",
+          "confidence": 0.545375406742096,
+          "confidence_drop": 0.35699641704559326,
+          "violation_A": false,
+          "violation_B": true
+        },
+        {
+          "mutated_question": "Is the black man running ?",
+          "predict_answer": "yes",
+          "confidence": 0.9193877577781677,
+          "confidence_drop": -0.017015933990478516,
+          "violation_A": false,
+          "violation_B": false
+        },
+        {
+          "mutated_question": "Is the white man running ?",
+          "predict_answer": "yes",
+          "confidence": 0.6720897555351257,
+          "confidence_drop": 0.23028206825256348,
+          "violation_A": false,
+          "violation_B": true
+        },
+        {
+          "mutated_question": "Is the black woman running ?",
+          "predict_answer": "no",
+          "confidence": 0.5664729475975037,
+          "confidence_drop": 0.33589887619018555,
+          "violation_A": true,
+          "violation_B": true
+        },
+        {
+          "mutated_question": "Is the white woman running ?",
+          "predict_answer": "no",
+          "confidence": 0.8142513632774353,
+          "confidence_drop": 0.0881204605102539,
+          "violation_A": true,
+          "violation_B": false
+        }
+      ]
+    }
+  ]
+}

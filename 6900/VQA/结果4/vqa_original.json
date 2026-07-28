@@ -1,0 +1,31 @@
+{
+  "image_id": "3.jpg",
+  "ishuman": 0,
+  "question_id": "3.jpg",
+  "question": "What is the total number of apples?",
+  "object": {
+    "category_name": "apples",
+    "action": null,
+    "count": 3,
+    "coordinates": [
+      {
+        "xmin": 343,
+        "ymin": 161,
+        "xmax": 498,
+        "ymax": 312
+      },
+      {
+        "xmin": 169,
+        "ymin": 145,
+        "xmax": 305,
+        "ymax": 287
+      },
+      {
+        "xmin": 30,
+        "ymin": 141,
+        "xmax": 170,
+        "ymax": 291
+      }
+    ]
+  }
+}

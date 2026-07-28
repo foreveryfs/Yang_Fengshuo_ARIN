@@ -1,0 +1,19 @@
+{
+  "image_id": "abstract_v002_val2015_000000020010.png",
+  "ishuman": 1,
+  "question_id": "abstract_v002_val2015_000000020010.png",
+  "question": "Is the girl reading?",
+  "object": {
+    "category_name": "girl",
+    "action": "reading",
+    "count": 1,
+    "coordinates": [
+      {
+        "xmin": 121,
+        "ymin": 141,
+        "xmax": 232,
+        "ymax": 270
+      }
+    ]
+  }
+}
